@@ -841,17 +841,19 @@ SJEdgeControlButtonItemTag const SJEdgeControlLayerCenterItem_Replay = 40000;
 - (void)_updateLeftAdapterIfNeeded {
     if ( sj_view_isDisappeared(_leftContainerView) ) return;
     
-    BOOL isFullscreen = _videoPlayer.isFullScreen;
+    //BOOL isFullscreen = _videoPlayer.isFullScreen;
     BOOL isLockedScreen = _videoPlayer.isLockedScreen;
 
     SJEdgeControlButtonItem *lockItem = [self.leftAdapter itemForTag:SJEdgeControlLayerLeftItem_Lock];
-    if ( lockItem != nil ) {
-        lockItem.hidden = !isFullscreen;
-        if ( lockItem.hidden == NO ) {
-            SJEdgeControlLayerSettings *setting = SJEdgeControlLayerSettings.commonSettings;
-            lockItem.image = isLockedScreen ? setting.lockBtnImage : setting.unlockBtnImage;
-        }
-    }
+    SJEdgeControlLayerSettings *setting = SJEdgeControlLayerSettings.commonSettings;
+    lockItem.image = isLockedScreen ? setting.lockBtnImage : setting.unlockBtnImage;
+//    if ( lockItem != nil ) {
+//        lockItem.hidden = !isFullscreen;
+//        if ( lockItem.hidden == NO ) {
+//            SJEdgeControlLayerSettings *setting = SJEdgeControlLayerSettings.commonSettings;
+//            lockItem.image = isLockedScreen ? setting.lockBtnImage : setting.unlockBtnImage;
+//        }
+//    }
     
     [_leftAdapter reload];
 }
